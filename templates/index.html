@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Concrete Compressive Strength Predictor</title>
+    
+    <style>
+        /* General Body Styling */
+        body {
+            background-color: Maroon;
+            color: white;
+            text-align: center;
+            padding-right: 90px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: underline;
+            padding: 20px;
+        }
+
+        /* Image Styling */
+        img {
+            background-size: 50%;
+            background-repeat: no-repeat;
+            float: right;
+            margin-left: 20px;
+        }
+
+        /* Form Styling */
+        .login {
+            font-size: 18px;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .prediction-text {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Concrete Compressive Strength Predictor</h1>
+    <img src="{{ url_for('static', filename='Compressive_strength_test.gif') }}" alt="Compressive Strength Test" width="425" height="600">
+    
+    <div class="login">
+        <form action="{{ url_for('predict') }}" method="post">
+            <label for="age"><b>Age (in days):</b></label>
+            <input type="number" id="age" name="age" placeholder="Age of the concrete" required />
+
+            <label for="cement"><b>Cement (in kg):</b></label>
+            <input type="number" step="0.01" id="cement" name="cement" placeholder="Cement quantity" required />
+
+            <label for="water"><b>Water (in kg):</b></label>
+            <input type="number" step="0.01" id="water" name="water" placeholder="Water quantity" required />
+
+            <label for="fly_ash"><b>Fly Ash (in kg):</b></label>
+            <input type="number" step="0.01" id="fly_ash" name="fa" placeholder="Fly Ash quantity" required />
+
+            <label for="superplasticizer"><b>Superplasticizer (in kg):</b></label>
+            <input type="number" step="0.01" id="superplasticizer" name="sp" placeholder="Superplasticizer quantity" required />
+
+            <label for="blast_furnace_slag"><b>Blast Furnace Slag (in kg):</b></label>
+            <input type="number" step="0.01" id="blast_furnace_slag" name="bfs" placeholder="Blast Furnace Slag quantity" required />
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <!-- Display prediction result -->
+        <div class="prediction-text">
+            {{ prediction_text }}
+        </div>
+    </div>
+
+    <footer>
+        Designed by <a href="https://www.linkedin.com/in/vikash-singh-chauhan-243634249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">VIKASH CHAUHAN</a> |
+        <a href="https://commons.wikimedia.org/wiki/File:Compressive_strength_test.gif#/media/File:Compressive_strength_test.gif" target="_blank">GIF Source</a>
+    </footer>
+
+</body>
+
+</html>
+
+
+
+
